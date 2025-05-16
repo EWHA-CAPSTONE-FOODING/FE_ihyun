@@ -1,0 +1,17 @@
+html,
+body {
+  max-width: 481px;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 12px;
+}
+
+:root {
+  --yellow-light: #FFEB80;  /* 연한 노란색 */
+  --yellow: #FFD700;        /* 일반 노란색 */
+  --yellow1: #FFF9C4;       /* 조금 더 연한 노란색 (원하는 경우) */
+  --grey1: #f7f7f9;
+  --grey2: #7d7d7d;
+
+  font-family: Noto Sans Kr;
+}
