@@ -1,21 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Header from "@components/Header/Header";
 import NavBar from "@components/NavBar/NavBar";
-import calendarIcon from "@assets/main/calendar.png";
+
+import report1 from "@assets/main/Report_1p.png";
+import report2 from "@assets/main/Report_2p.png";
+import report3 from "@assets/main/Report_3p.png";
 
 const Main = () => {
   const navigate = useNavigate();
 
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const reportImages = [report1, report2, report3];
+
+  const handleImageClick = () => {
+    if (currentPage < reportImages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  /*
   return (
     <Container>
       <HeaderWrapper>
         <Header isBack={false} title="p1" />
       </HeaderWrapper>
       <MainContent>
-        <img src={calendarIcon} alt="calendar icon" />
+        <img src={report1} alt="calendar icon" />
       </MainContent>
+      <NavBarWrapper>
+        <NavBar />
+      </NavBarWrapper>
+    </Container>
+  );
+  */
+  return (
+    <Container>
+      <HeaderWrapper>
+        <Header isBack={false} title={`p${currentPage + 1}`} />
+      </HeaderWrapper>
+
+      <MainContent>
+        <img
+          src={reportImages[currentPage]}
+          alt={`report ${currentPage + 1}`}
+          onClick={handleImageClick}
+        />
+      </MainContent>
+
       <NavBarWrapper>
         <NavBar />
       </NavBarWrapper>
@@ -45,12 +79,19 @@ const MainContent = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+  align-items: flex-start;
   padding: 20px;
+  padding-top: 10px;
 
   img {
-    width: 200px;
+    /* width: 200px; */
+    /* height: auto; */
+    width: 105%;
+    max-width: 375px; /* 모바일 화면 크기 기준 */
     height: auto;
+    border-radius: 5px; /* 원한다면 둥글게 */
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 살짝 입체감 추가 */
   }
 `;
 
