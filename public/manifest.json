@@ -11,7 +11,7 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "/logo.png",
+      "src": "/flogo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
