@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Header from "@components/Header/Header";
 import NavBar from "@components/NavBar/NavBar";
-import calendarIcon from "@assets/main/calendar.png";
+
+import purchase1 from "@assets/main/Purchase_1p.png";
+import purchase2 from "@assets/main/Purchase_2p.png";
 
 const Main = () => {
   const navigate = useNavigate();
 
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const purchaseImages = [purchase1, purchase2];
+
+  const handleImageClick = () => {
+    if (currentPage < purchaseImages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  /*
   return (
     <Container>
       <HeaderWrapper>
@@ -16,6 +29,26 @@ const Main = () => {
       <MainContent>
         <img src={calendarIcon} alt="calendar icon" />
       </MainContent>
+      <NavBarWrapper>
+        <NavBar />
+      </NavBarWrapper>
+    </Container>
+  );
+  */
+  return (
+    <Container>
+      <HeaderWrapper>
+        <Header isBack={false} title={`p${currentPage + 1}`} />
+      </HeaderWrapper>
+
+      <MainContent>
+        <img
+          src={purchaseImages[currentPage]}
+          alt={`report ${currentPage + 1}`}
+          onClick={handleImageClick}
+        />
+      </MainContent>
+
       <NavBarWrapper>
         <NavBar />
       </NavBarWrapper>
@@ -45,12 +78,19 @@ const MainContent = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+  align-items: flex-start;
   padding: 20px;
+  padding-top: 10px;
 
   img {
-    width: 200px;
+    /* width: 200px; */
+    /* height: auto; */
+    width: 105%;
+    max-width: 375px; /* 모바일 화면 크기 기준 */
     height: auto;
+    border-radius: 5px; /* 원한다면 둥글게 */
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 살짝 입체감 추가 */
   }
 `;
 
